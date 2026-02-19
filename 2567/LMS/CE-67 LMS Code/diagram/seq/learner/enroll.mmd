@@ -1,0 +1,34 @@
+sequenceDiagram
+  actor Client as Learner
+  participant CourseController
+  participant CourseService
+  participant CourseRepository
+
+  Client->>+CourseController: POST /api/course/enroll/{courseCycle.id}
+  CourseController->>+CourseService: enrollCourse()
+  CourseService->>+CourseRepository: getCourseCycleById()
+  CourseRepository-->>-CourseService: courseCycle
+
+  CourseService->>+CourseService: checkUserEnrollPermission()
+  CourseService-->>-CourseService: permissionChecked
+  
+  alt [User does not have enroll permission]
+    CourseService-->>-CourseController: courseServiceResponse()
+    CourseController-->>-Client: handleServiceResponse(failed)
+  else [User has enroll permission]
+    activate CourseService
+    CourseService->>+CourseService: checkEnrollEndDate()
+    CourseService-->>-CourseService: enrollmentValid
+    alt [Enrollment has ended]
+      CourseService-->>-CourseController: courseServiceResponse()
+      activate CourseController
+      CourseController-->>-Client: handleServiceResponse(failed)
+    else [Enrollment is still open]
+      activate CourseService
+      CourseService->>+CourseRepository: enrollCourse()
+      CourseRepository-->>-CourseService: enrollments
+      CourseService-->>-CourseController: courseServiceResponse()
+      activate CourseController
+      CourseController-->>-Client: handleServiceResponse(success)
+    end
+  end

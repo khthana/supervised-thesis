@@ -1,0 +1,24 @@
+services:
+  database:
+    container_name: test-database
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=sosecret
+      - POSTGRES_DB=learnifydb
+      - DB_BACKEND_USER=backend
+      - DB_BACKEND_PASSWORD=sosecret
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./config/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./config/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    command: ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: "2G"

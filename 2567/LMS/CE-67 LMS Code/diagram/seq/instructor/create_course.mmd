@@ -1,0 +1,24 @@
+sequenceDiagram
+  actor Client as Instructor
+  participant CourseController
+  participant CourseService
+  participant CourseRepository
+  participant MediaService
+  participant MediaRepository
+
+  Client->>+CourseController: POST /api/course
+  CourseController->>+CourseService: createCourse(course)
+  CourseService->>+CourseRepository: save(course)
+  CourseRepository-->>-CourseService: courseCycle
+  CourseService-->>-CourseController: courseServiceResponse()
+
+  CourseController-->>-Client: handleServiceResponse(success)
+
+  alt user upload media
+    Client->>+CourseController: uploadMedia(media)
+    CourseController->>+MediaService: uploadMedia(media)
+    MediaService->>+MediaRepository: save(media)
+    MediaRepository-->>-MediaService: media
+    MediaService-->>-CourseController: mediaServiceResponse()
+    CourseController-->>-Client: handleServiceResponse(success)
+  end

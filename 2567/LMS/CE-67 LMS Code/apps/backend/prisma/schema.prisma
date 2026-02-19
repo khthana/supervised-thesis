@@ -1,0 +1,294 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+model admins {
+  user_id          String   @id(map: "pk_admins") @db.Uuid
+  is_root          Boolean  @default(false)
+  is_active        Boolean  @default(true)
+  created_by       String   @db.Uuid
+  created_at       DateTime @default(now()) @db.Timestamptz(6)
+  updated_at       DateTime @default(now()) @db.Timestamptz(6)
+  users            users    @relation("admins_created_byTousers", fields: [created_by], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_admins_admins")
+  users_created_by users    @relation("admins_user_idTousers", fields: [user_id], references: [user_id], onUpdate: NoAction, map: "fk_admins_users")
+}
+
+model course_categories {
+  category_id          Int                    @id(map: "pk_course_categories") @default(autoincrement())
+  name                 String                 @unique(map: "unq_course_categories") @db.VarChar(70)
+  created_at           DateTime               @default(now()) @db.Timestamptz(6)
+  updated_at           DateTime?              @default(dbgenerated("CURRENT_DATE")) @db.Timestamptz(6)
+  course_subcategories course_subcategories[]
+  courses              courses[]
+}
+
+model course_cycles {
+  cycle_id            String                @id(map: "pk_course_cycles") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  course_id           String                @db.Uuid
+  name                String                @unique(map: "unq_course_cycles") @db.VarChar(50)
+  is_always_enroll    Boolean               @default(true)
+  is_always_open      Boolean               @default(true)
+  max_enrollments     Int                   @default(0) @db.SmallInt
+  is_restrict_enroll  Boolean               @default(false)
+  course_type         String                @db.VarChar(12)
+  status              String                @db.VarChar(12)
+  enroll_start        DateTime              @default(now()) @db.Timestamptz(6)
+  enroll_end          DateTime?             @db.Timestamptz(6)
+  cycle_start         DateTime              @default(now()) @db.Timestamptz(6)
+  cycle_end           DateTime?             @db.Timestamptz(6)
+  created_at          DateTime              @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime              @default(now()) @db.Timestamptz(6)
+  announcements       announcements[]
+  courses             courses               @relation(fields: [course_id], references: [course_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_course_cycles_courses")
+  course_enrollments  course_enrollments[]
+  cycle_access_emails cycle_access_emails[]
+  lessons             lessons[]
+}
+
+model course_enrollments {
+  user_id          String        @db.Uuid
+  cycle_id         String        @db.Uuid
+  status           String        @db.VarChar(12)
+  completed_at     DateTime?     @db.Timestamptz(6)
+  last_enrolled_at DateTime      @default(now()) @db.Timestamptz(6)
+  last_dropped_at  DateTime?     @db.Timestamptz(6)
+  updated_at       DateTime      @default(now()) @db.Timestamptz(6)
+  course_cycles    course_cycles @relation(fields: [cycle_id], references: [cycle_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_course_enrollments")
+  users            users         @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_course_enrollments_users")
+
+  @@id([user_id, cycle_id], map: "pk_course_enrollments")
+  @@index([cycle_id], map: "idx_course_enrollments_cycle_id")
+}
+
+model course_subcategories {
+  subcategory_id    Int               @id(map: "pk_course_subcategories") @default(autoincrement())
+  category_id       Int
+  name              String            @unique(map: "unq_course_subcategories") @db.VarChar(70)
+  created_at        DateTime          @default(now()) @db.Timestamptz(6)
+  updated_at        DateTime          @default(now()) @db.Timestamptz(6)
+  course_categories course_categories @relation(fields: [category_id], references: [category_id], onUpdate: NoAction, map: "fk_course_subcategories")
+  courses           courses[]
+}
+
+model courses {
+  course_id            String               @id(map: "pk_courses") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  subject_id           String?              @unique(map: "idx_courses_subject_id") @db.VarChar(30)
+  description          String?
+  name                 String               @unique(map: "idx_courses_name") @db.VarChar(120)
+  category_id          Int
+  subcategory_id       Int
+  course_language      String               @db.VarChar(5)
+  created_by           String               @db.Uuid
+  created_at           DateTime             @default(now()) @db.Timestamptz(6)
+  updated_at           DateTime             @default(now()) @db.Timestamptz(6)
+  course_cycles        course_cycles[]
+  course_subcategories course_subcategories @relation(fields: [subcategory_id], references: [subcategory_id], onUpdate: NoAction, map: "fk_courses")
+  course_categories    course_categories    @relation(fields: [category_id], references: [category_id], onUpdate: NoAction, map: "fk_courses_course_categories")
+  users                users                @relation(fields: [created_by], references: [user_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_courses_users")
+}
+
+model users {
+  user_id                  String                     @id(map: "pk_tbl") @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email                    String                     @unique(map: "unq_users_email") @db.VarChar(120)
+  password_hash            String                     @unique(map: "idx_users_hash")
+  firstname_en             String                     @db.VarChar(50)
+  lastname_en              String                     @db.VarChar(50)
+  firstname_th             String?                    @db.VarChar(50)
+  lastname_th              String?                    @db.VarChar(50)
+  user_role                String                     @db.VarChar(20)
+  is_verified              Boolean                    @default(false)
+  is_active                Boolean                    @default(true)
+  created_at               DateTime                   @default(now()) @db.Timestamptz(6)
+  updated_at               DateTime                   @default(now()) @db.Timestamptz(6)
+  admins_created_byTousers admins[]                   @relation("admins_created_byTousers")
+  admins                   admins?                    @relation("admins_user_idTousers")
+  announcements            announcements[]
+  course_enrollments       course_enrollments[]
+  courses                  courses[]
+  user_comments            user_comments[]
+  user_content_completions user_content_completions[]
+  user_quiz_answers        user_quiz_answers[]
+  user_submissions         user_submissions[]
+}
+
+model media_files {
+  reference_id       String   @db.VarChar(37)
+  reference_type     String   @db.VarChar(50)
+  reference_sequence Int      @default(1)
+  reference_settings Json?    @db.Json
+  url                String
+  type               String   @db.VarChar(120)
+  mime_type          String   @db.VarChar(120)
+  size               BigInt
+  created_at         DateTime @default(now()) @db.Timestamptz(6)
+  updated_at         DateTime @default(now()) @db.Timestamptz(6)
+
+  @@id([reference_id, reference_type], map: "pk_media_files")
+}
+
+model quiz_questions {
+  question_id       Int                 @id(map: "pk_quiz_questions") @default(autoincrement())
+  content_id        Int
+  question_text     String
+  question_type     String              @db.VarChar(12)
+  quiz_options      quiz_options[]
+  lesson_contents   lesson_contents     @relation(fields: [content_id], references: [content_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_quiz_questions")
+  user_quiz_answers user_quiz_answers[]
+}
+
+model announcements {
+  announce_id   Int            @id(map: "pk_announcements") @default(autoincrement())
+  created_by    String         @db.Uuid
+  name          String         @db.VarChar(100)
+  content       String
+  created_at    DateTime       @default(now()) @db.Timestamptz(6)
+  updated_at    DateTime       @default(now()) @db.Timestamptz(6)
+  cycle_id      String?        @db.Uuid
+  users         users          @relation(fields: [created_by], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "announcement_creator")
+  course_cycles course_cycles? @relation(fields: [cycle_id], references: [cycle_id], onDelete: NoAction, onUpdate: NoAction, map: "announcement_in_course_cycle")
+}
+
+model lesson_contents {
+  lesson_id                                                       Int
+  reference_settings                                              Json?                      @db.Json
+  sequence                                                        Int                        @unique(map: "unq_lesson_cycle_seq") @db.SmallInt
+  name                                                            String                     @unique(map: "unq_lesson_contents_name") @db.VarChar(100)
+  content                                                         String?
+  content_status                                                  String                     @db.VarChar(12)
+  total_points                                                    Int                        @default(0) @db.SmallInt
+  content_type                                                    String                     @unique(map: "unq_lesson_contents_content_type") @db.VarChar(12)
+  content_id                                                      Int                        @id(map: "pk_lesson_contents") @default(autoincrement())
+  grader_tests                                                    grader_tests?
+  lessons                                                         lessons                    @relation(fields: [lesson_id], references: [lesson_id], onUpdate: NoAction, map: "fk_lesson_contents_lessons")
+  quiz_questions                                                  quiz_questions[]
+  scwg_lesson_contents                                            scwg_lesson_contents[]
+  user_content_completions                                        user_content_completions[]
+  user_submissions                                                user_submissions[]         @relation("user_submissions_content_idTolesson_contents")
+  user_submissions_type                                           user_submissions[]         @relation("user_submissions_content_typeTolesson_contents")
+
+  @@unique([lesson_id, sequence], map: "idx_lesson_seq")
+}
+
+model lessons {
+  lesson_id                Int               @id(map: "pk_lessons") @default(autoincrement())
+  cycle_id                 String            @db.Uuid
+  name                     String?           @db.VarChar(70)
+  created_at               DateTime          @default(now()) @db.Timestamptz(6)
+  updated_at               DateTime          @default(now()) @db.Timestamptz(6)
+  sequence                 Int               @db.SmallInt
+  requires_previous_lesson Boolean           @default(false)
+  lesson_contents          lesson_contents[]
+  course_cycles            course_cycles     @relation(fields: [cycle_id], references: [cycle_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_lessons_course_cycles")
+
+  @@unique([cycle_id, sequence], map: "unq_lessons_sequence_cycle")
+  @@index([cycle_id], map: "idx_lessons_cycle_id")
+}
+
+model score_weight_groups {
+  scwg_id              Int                    @id(map: "pk_score_weight_groups") @default(autoincrement())
+  name                 String                 @db.VarChar(100)
+  created_at           DateTime               @default(now()) @db.Timestamptz(6)
+  updated_at           DateTime               @default(now()) @db.Timestamptz(6)
+  scwg_lesson_contents scwg_lesson_contents[]
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model scwg_lesson_contents {
+  scwg_id             Int
+  content_id          Int
+  weight_percent      Int                 @db.SmallInt
+  created_at          DateTime            @default(now()) @db.Timestamptz(6)
+  updated_at          DateTime            @default(now()) @db.Timestamptz(6)
+  score_weight_groups score_weight_groups @relation(fields: [scwg_id], references: [scwg_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_scwg_lesson_contents_1")
+  lesson_contents     lesson_contents     @relation(fields: [content_id], references: [content_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_scwg_lesson_contents_2")
+
+  @@id([scwg_id, content_id], map: "pk_scwg_lesson_contents")
+}
+
+model user_comments {
+  user_id        String    @db.Uuid
+  reference_id   Int
+  reference_type String    @db.VarChar(50)
+  comments       String
+  created_at     DateTime  @default(now()) @db.Timestamptz(6)
+  deleted_at     DateTime? @db.Timestamptz(6)
+  users          users     @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_comments_users")
+
+  @@id([user_id, reference_id, reference_type], map: "pk_user_comments")
+}
+
+model grader_tests {
+  content_id      Int             @id(map: "pk_grader_tests")
+  source_code     String
+  created_at      DateTime        @default(now()) @db.Timestamptz(6)
+  updated_at      DateTime        @default(now()) @db.Timestamptz(6)
+  lesson_contents lesson_contents @relation(fields: [content_id], references: [content_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_grader_tests")
+}
+
+model quiz_options {
+  question_id    Int
+  option_id      Int            @id(map: "pk_quiz_options") @default(autoincrement())
+  option_text    String?
+  is_correct     Boolean        @default(false)
+  quiz_questions quiz_questions @relation(fields: [question_id], references: [question_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_quiz_options_quiz_questions")
+}
+
+model user_content_completions {
+  user_id           String          @db.Uuid
+  content_id        Int
+  completed_at      DateTime        @default(now()) @db.Timestamptz(6)
+  completion_status String          @db.VarChar(20)
+  users             users           @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_user_content_completions")
+  lesson_contents   lesson_contents @relation(fields: [content_id], references: [content_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_user_content_completions_lesson")
+
+  @@id([user_id, content_id], map: "pk_user_content_completions")
+  @@index([content_id], map: "idx_user_content_completions_content")
+  @@index([user_id], map: "idx_user_content_completions_user")
+}
+
+model user_quiz_answers {
+  user_id        String         @db.Uuid
+  attempt_number Int            @default(autoincrement())
+  question_id    Int
+  answer         String?
+  score          Int            @default(0)
+  created_at     DateTime       @default(now()) @db.Timestamptz(6)
+  quiz_questions quiz_questions @relation(fields: [question_id], references: [question_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_quiz_answers_question_id")
+  users          users          @relation(fields: [user_id], references: [user_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_user_quiz_answers_user")
+
+  @@id([user_id, question_id, attempt_number], map: "pk_user_quiz_answers")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model user_submissions {
+  user_id                                                        String          @db.Uuid
+  content_id                                                     Int
+  attempt_number                                                 Int             @default(autoincrement())
+  score                                                          Int             @default(0)
+  answer                                                         String?
+  is_checked                                                     Boolean         @default(false)
+  created_at                                                     DateTime        @default(now()) @db.Timestamptz(6)
+  updated_at                                                     DateTime        @default(now()) @db.Timestamptz(6)
+  content_type                                                   String          @db.VarChar(12)
+  lesson_contents                                                lesson_contents @relation("user_submissions_content_idTolesson_contents", fields: [content_id], references: [content_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_assignment_submissions_content")
+  users                                                          users           @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: NoAction, map: "fk_assignment_submissions_user")
+  lesson_contents_type                                           lesson_contents @relation("user_submissions_content_typeTolesson_contents", fields: [content_type], references: [content_type], onDelete: Cascade, onUpdate: NoAction, map: "fk_user_submissions")
+
+  @@id([user_id, content_id, attempt_number], map: "pk_assignment_submissions")
+  @@index([content_id], map: "idx_user_submissions_content_id")
+}
+
+model cycle_access_emails {
+  cycle_id      String        @db.Uuid
+  user_email    String        @db.VarChar(120)
+  access_role   String        @db.VarChar(20)
+  course_cycles course_cycles @relation(fields: [cycle_id], references: [cycle_id], onDelete: NoAction, onUpdate: NoAction, map: "fk_cycle_access_emails_null")
+
+  @@id([cycle_id, user_email], map: "pk_cycle_access_emails")
+  @@index([user_email], map: "idx_cycle_access_emails_user_email")
+}

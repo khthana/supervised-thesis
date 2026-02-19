@@ -1,0 +1,23 @@
+sequenceDiagram
+    actor Client as User
+    participant AuthController
+    participant UserService
+    participant AuthService
+    participant UserRepository
+
+    Client->>+AuthController: POST /api/auth/login
+    AuthController->>+UserService: findByEmail()
+    UserService->>+UserRepository: findByEmailAsync()
+    UserRepository-->>-UserService: user
+    UserService-->>-AuthController: userServiceResponse()
+
+    alt user not found
+        AuthController-->>Client: handleServiceResponse(failed)
+    else user found
+        AuthController->>+AuthService: userLogin()
+        AuthService->>+AuthService: verifyPassword()
+        AuthService-->>-AuthService: passwordVerified
+        AuthService-->>-AuthController: authServiceResponse()
+        AuthController-->>-Client: handleServiceResponse(success)
+    end
+

@@ -1,0 +1,20 @@
+sequenceDiagram
+  actor Client as Learner
+  participant CourseController
+  participant CourseService
+  participant CourseRepository
+
+  Client->>+CourseController: PUT /api/course/enroll/{courseCycle.id}
+  CourseController->>+CourseService: unenrollCourse()
+  
+  CourseService->>+CourseRepository: getCourseCycleById()
+  activate CourseService
+    CourseRepository-->>-CourseService: courseCycle
+  deactivate CourseService
+
+  CourseService->>+CourseRepository: updateEnrollment()
+  activate CourseService
+    CourseRepository-->>-CourseService: enrollments
+  deactivate CourseService
+  CourseService-->>-CourseController: courseServiceResponse()
+  CourseController-->>-Client: handleServiceResponse(success)

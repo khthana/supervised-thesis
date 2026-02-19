@@ -1,0 +1,35 @@
+sequenceDiagram
+  actor Client as Learner
+  participant CourseController
+  participant CourseService
+  participant CourseRepository
+  participant UserService
+  participant UserRepository
+
+  Client->>+CourseController: GET /api/course/{courseCycle.id}/users
+  
+  CourseController->>+CourseService: getEnrollmentUsers()
+
+  CourseService->>+CourseService: checkUserEnrollPermission()
+  CourseService-->>-CourseService: permissionChecked
+
+  alt User does not have permission
+    CourseService-->>-CourseController: courseServiceResponse()
+    CourseController-->>-Client: handleServiceResponse(failed)
+  else User has permission
+    activate CourseService
+    CourseService->>+CourseRepository: getEnrollmentByCourseCycleId()
+    CourseRepository-->>-CourseService: enrollments
+    activate CourseController
+    CourseService-->>-CourseController: courseServiceResponse()
+    
+    CourseController->>+UserService: getUsersByIds()
+    activate CourseController
+    UserService->>+UserRepository: getUsersByIds()
+    UserRepository-->>-UserService: users
+    UserService-->>-CourseController: users
+    deactivate CourseController
+    CourseController-->>-Client: handleServiceResponse(success)
+    
+  end
+

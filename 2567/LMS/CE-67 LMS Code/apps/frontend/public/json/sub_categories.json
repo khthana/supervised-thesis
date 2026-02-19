@@ -1,0 +1,318 @@
+{
+	"sub_categories": [
+		{
+			"id": 1,
+			"name": {
+				"en": "Basic Networking",
+				"th": "ระบบเครือข่ายพื้นฐาน"
+			},
+			"description": "Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 1
+		},
+		{
+			"id": 2,
+			"name": {
+				"en": "Cloud Computing",
+				"th": "การประมวลผลบนระบบคลาวด์"
+			},
+			"description": "Cloud Computing is the on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user. The term is generally used to describe data centers available to many users over the Internet.",
+			"category_id": 1
+		},
+		{
+			"id": 3,
+			"name": {
+				"en": "Advanced Networking",
+				"th": "ระบบเครือข่ายขั้นสูง"
+			},
+			"description": "Advanced Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 1
+		},
+		{
+			"id": 4,
+			"name": {
+				"en": "Internet of Things",
+				"th": "อินเทอร์เน็ตของสรรพสิ่ง"
+			},
+			"description": "The Internet of Things (IoT) is a system of interrelated computing devices, mechanical and digital machines, objects, animals or people that are provided with unique identifiers and the ability to transfer data over a network without requiring human-to-human or human-to",
+			"category_id": 2
+		},
+		{
+			"id": 5,
+			"name": {
+				"en": "Embedded System",
+				"th": "ระบบสมองกลฝังตัว"
+			},
+			"description": "An embedded system is a computer system—a combination of a computer processor, computer memory, and input/output peripheral devices—that has a dedicated function within a larger mechanical or electrical system.",
+			"category_id": 2
+		},
+		{
+			"id": 6,
+			"name": {
+				"en": "Schematic and Design",
+				"th": "การออกแบบเบื้องต้น"
+			},
+			"description": "Schematic and Design is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 2
+		},
+		{
+			"id": 7,
+			"name": {
+				"en": "Circuit Design",
+				"th": "การออกแบบวงจร"
+			},
+			"description": "Circuit Design is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 2
+		},
+		{
+			"id": 8,
+			"name": {
+				"en": "Microcontroller",
+				"th": "ไมโครคอนโทรลเลอร์"
+			},
+			"description": "A microcontroller is a small computer on a single metal-oxide-semiconductor (MOS) integrated circuit (IC) chip. A microcontroller contains one or more CPUs (processor cores) along with memory and programmable input/output peripherals.",
+			"category_id": 2
+		},
+		{
+			"id": 9,
+			"name": {
+				"en": "Digital System",
+				"th": "ระบบดิจิตอล"
+			},
+			"description": "Digital System is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 2
+		},
+		{
+			"id": 10,
+			"name": {
+				"en": "Machine Learning",
+				"th": "Machine Learning"
+			},
+			"category_id": 3
+		},
+		{
+			"id": 11,
+			"name": {
+				"en": "Deep Learning",
+				"th": "Deep Learning"
+			},
+			"description": "Deep Learning is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 3
+		},
+		{
+			"id": 12,
+			"name": {
+				"en": "Natural Network",
+				"th": "Natural Network"
+			},
+			"description": "Natural Network is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 3
+		},
+		{
+			"id": 13,
+			"name": {
+				"en": "Database System and Design",
+				"th": "การออกแบบและระบบฐานข้อมูล"
+			},
+			"description": "Database System and Design is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 4
+		},
+		{
+			"id": 14,
+			"name": {
+				"en": "Data Analysis",
+				"th": "การวิเคราะห์ข้อมูล"
+			},
+			"description": "Data Analysis is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 4
+		},
+		{
+			"id": 15,
+			"name": {
+				"en": "Big Data",
+				"th": "ข้อมูลขนาดใหญ่"
+			},
+			"description": "Big Data is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 4
+		},
+		{
+			"id": 16,
+			"name": {
+				"en": "Data Visualization",
+				"th": "การแสดงผลข้อมูล"
+			},
+			"description": "Data Visualization is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 4
+		},
+		{
+			"id": 17,
+			"name": {
+				"en": "Offensive Security",
+				"th": "Offensive Security"
+			},
+			"description": "Offensive Security is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 5
+		},
+		{
+			"id": 18,
+			"name": {
+				"en": "Defensive Security",
+				"th": "Defensive Security"
+			},
+			"description": "Defensive Security is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 5
+		},
+		{
+			"id": 19,
+			"name": {
+				"en": "Digital Forensic",
+				"th": "Digital Forensic"
+			},
+			"description": "Digital Forensic is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 5
+		},
+		{
+			"id": 20,
+			"name": {
+				"en": "Security Operation",
+				"th": "Security Operation"
+			},
+			"description": "Security Operation is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 5
+		},
+		{
+			"id": 21,
+			"name": {
+				"en": "Ethical Hacking",
+				"th": "การแฮ็กอย่างมีจริยะธรรม"
+			},
+			"description": "Ethical Hacking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 5
+		},
+		{
+			"id": 22,
+			"name": {
+				"en": "Computer Security",
+				"th": "ความปลอดภัยทางคอมพิวเตอร์"
+			},
+			"description": "Computer Security is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 5
+		},
+		{
+			"id": 23,
+			"name": {
+				"en": "UX/UI Design",
+				"th": "การออกแบบ UX/UI"
+			},
+			"description": "UX/UI Design is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 6
+		},
+		{
+			"id": 24,
+			"name": {
+				"en": "Software Architecture",
+				"th": "การออกแบบโครงสร้างซอฟต์แวร์"
+			},
+			"description": "Software Architecture is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 6
+		},
+		{
+			"id": 25,
+			"name": {
+				"en": "Software Development",
+				"th": "การพัฒนาซอฟต์แวร์"
+			},
+			"description": "Software Development is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 6
+		},
+		{
+			"id": 26,
+			"name": {
+				"en": "Software Testing",
+				"th": "การทดสอบซอฟต์แวร์"
+			},
+			"description": "Software Testing is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 6
+		},
+		{
+			"id": 27,
+			"name": {
+				"en": "Mobile Application Development",
+				"th": "การพัฒนาแอพพลิเคชั่นบนมือถือ"
+			},
+			"description": "Mobile Application Development is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 6
+		},
+		{
+			"id": 28,
+			"name": {
+				"en": "Web Development",
+				"th": "การพัฒนาเว็บไซต์"
+			},
+			"description": "Web Development is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 6
+		},
+		{
+			"id": 29,
+			"name": {
+				"en": "Operating System",
+				"th": "ระบบปฏิบัติการ"
+			},
+			"description": "Operating System is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 6
+		},
+		{
+			"id": 30,
+			"name": {
+				"en": "Game Development",
+				"th": "การพัฒนาเกมส์"
+			},
+			"description": "Game Development is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 6
+		},
+		{
+			"id": 31,
+			"name": {
+				"en": "Mathematics",
+				"th": "คณิตศาสตร์และการคำนวณ"
+			},
+			"description": "Mathematics is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 7
+		},
+		{
+			"id": 32,
+			"name": {
+				"en": "Foreign languages.",
+				"th": "ภาษาต่างประเทศ"
+			},
+			"description": "Foreign languages is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 7
+		},
+		{
+			"id": 33,
+			"name": {
+				"en": "Engineering Fundamental",
+				"th": "พื้นฐานวิศวกรรม"
+			},
+			"description": "Engineering Fundamental is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 7
+		},
+		{
+			"id": 34,
+			"name": {
+				"en": "General Education",
+				"th": "การศึกษาทั่วไป"
+			},
+			"description": "General Education is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 7
+		},
+		{
+			"id": 35,
+			"name": {
+				"en": "CE Fundamental",
+				"th": "พื้นฐานวิศวกรรมคอมพิวเตอร์"
+			},
+			"description": "CE Fundamental is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software. Networking is the practice of connecting computers and other devices to share resources. Networks are built with a mix of computer hardware and computer software.",
+			"category_id": 7
+		}
+	]
+}

@@ -1,0 +1,19 @@
+{
+	"name": "ce-learnify",
+	"version": "0.0.1",
+	"description": "Learnify is a platform for learning and teaching.",
+	"workspaces": ["apps/backend", "apps/frontend", "apps/packages", "apps/workers"],
+	"scripts": {
+		"check": "biome check .",
+		"lint": "biome lint .",
+		"format": "biome format .",
+		"format:fix": "biome format --write .",
+		"prepare": "husky"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"@biomejs/biome": "1.9.4",
+		"husky": "^9.1.7",
+		"lint-staged": "15.3.0"
+	}
+}

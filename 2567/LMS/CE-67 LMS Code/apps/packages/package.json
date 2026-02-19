@@ -1,0 +1,16 @@
+{
+	"name": "learnify-packages",
+	"version": "0.1.0",
+	"scripts": {
+		"lint": "biome lint .",
+		"format": "biome format .",
+		"format:fix": "biome format --write ."
+	},
+	"dependencies": {
+		"@asteasolutions/zod-to-openapi": "7.2.0",
+		"zod": "latest"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	}
+}

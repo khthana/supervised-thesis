@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"rootDir": "../../",
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["./src/*"],
+			"@shared/*": ["../packages/*"],
+			"@backend/*": ["../backend/src/*"]
+		},
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"outDir": "build",
+		"importsNotUsedAsValues": "remove",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": true,
+		"composite": true,
+		"noEmit": true,
+		"types": ["vitest/globals", "@types/bun"]
+	},
+	"include": ["src", "../packages", "../backend/src"],
+	"exclude": ["node_modules", "dist", "build"]
+}

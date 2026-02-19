@@ -1,0 +1,88 @@
+{
+	"users": [
+		{
+			"user_id": 0,
+			"user_email": "ksjirasa@gmail.com",
+			"user_kmitl_email": "ksjirasa@gmail.com",
+			"title_en": "Mr.",
+			"title_th": "นาย",
+			"first_name_en": "Jirasak",
+			"last_name_en": "Sittigorn",
+			"first_name_th": "จิระศักดิ์",
+			"last_name_th": "สิทธิกร",
+			"profile_image": "https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg",
+			"is_verified": true,
+			"is_active": true
+		},
+		{
+			"user_id": 1,
+			"user_email": "khthana@kmitl.ac.th",
+			"user_kmitl_email": "khthana@hotmail.com",
+			"title_en": "Asst.Prof.",
+			"title_th": "ผศ.",
+			"first_name_en": "Thana",
+			"last_name_en": "Hongsawan",
+			"first_name_th": "ธนา",
+			"last_name_th": "หงสุวรรณ",
+			"profile_image": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
+			"is_verified": true,
+			"is_active": true
+		},
+		{
+			"user_id": 2,
+			"user_email": "bunditpp98@gmail.com",
+			"user_kmitl_email": "ir.ce@gmail.com",
+			"title_en": "Asst.Prof.",
+			"title_th": "ผศ.",
+			"first_name_en": "Bundit",
+			"last_name_en": "Pasaya",
+			"first_name_th": "บัณฑิต",
+			"last_name_th": "พัสยา",
+			"profile_image": null,
+			"is_verified": false,
+			"is_active": true
+		},
+		{
+			"user_id": 3,
+			"user_email": "",
+			"user_kmitl_email": "rathachai.ch@kmitl.ac.th",
+			"title_en": "Assoc.Prof.Dr. ",
+			"title_th": "รศ. ดร. ",
+			"first_name_en": "Rathachai ",
+			"last_name_en": "Chawuthai",
+			"first_name_th": "รัฐชัย",
+			"last_name_th": "ชาวอุทัย",
+			"profile_image": null,
+			"is_verified": true,
+			"is_active": true
+		},
+		{
+			"user_id": 4,
+			"user_email": "thanunchai.th@kmitl.ac.th",
+			"user_kmitl_email": null,
+			"title_en": "Asst.Prof.Dr. ",
+			"title_th": "ผศ. ดร.",
+			"first_name_en": "Thanunchai ",
+			"last_name_en": "Threepak",
+			"first_name_th": "ธนัญชัย ",
+			"last_name_th": "ตรีภาค",
+			"profile_image": "",
+			"is_verified": true,
+			"is_active": true
+		},
+		{
+			"user_id": 5,
+			"user_email": "eiei0006@gmail.com",
+			"user_kmitl_email": "65015077@kmitl.ac.th",
+			"title_en": "Mr.",
+			"title_th": "นาย",
+			"first_name_en": "thiraphat",
+			"last_name_en": "Suksamosorn",
+			"first_name_th": "ธีรภัทร์",
+			"last_name_th": "สุขสโมสร",
+			"profile_image": "https://gratisography.com/wp-content/uploads/2024/01/gratisography-cyber-kitty-800x525.jpg",
+			"is_verified": true,
+			"is_active": true
+		}
+	]
+}

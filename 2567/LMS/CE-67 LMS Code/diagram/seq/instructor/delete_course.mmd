@@ -1,0 +1,13 @@
+sequenceDiagram
+  actor Client as Instructor
+  participant CourseController
+  participant CourseService
+  participant CourseRepository
+
+  Client->>+CourseController: deleteCourse(course)
+  CourseController->>+CourseService: deleteCourse(course)
+  CourseService->>+CourseRepository: delete(course)
+  CourseRepository-->>-CourseService: deleted
+  CourseService-->>-CourseController: serviceResponse()
+
+  CourseController-->>-Client: handleServiceResponse(success)

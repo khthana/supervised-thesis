@@ -1,0 +1,43 @@
+echo '🏗️👷 Building, styling, and testing your project before committing... 🚀🔨'
+
+# Check format standards
+bun run format ||
+(
+  echo '🛠️😱 Oops! Your styling is offbeat - Prettier Check Failed. 😱🛠️'
+  echo 'Your code formatting is not up to standard. Please run "bun run format" to fix the issues and commit again.';
+  false;
+)
+
+# Check Lint standards
+bun run --filter learnify-backend lint ||
+(
+  echo '🚨😬 Oh no! Your code quality needs improvement - ESLint Check Failed. 😬🚨'
+  echo 'Your code has some issues. Please run "bun run lint" to address them and try committing again.';
+  false;
+)
+
+bun run --filter learnify-frontend lint ||
+(
+  echo '🚨😬 Oh no! Your code quality needs improvement - ESLint Check Failed. 😬🚨'
+  echo 'Your code has some issues. Please run "bun run lint" to address them and try committing again.';
+  false;
+)
+
+# check backend with tsc
+bun run --filter learnify-backend typecheck ||
+(
+  echo '🔍🤔 Hmm... Something seems off - TypeScript Check Failed. 🤔🔍'
+  echo 'Your code has some syntax errors. Please run "bun run tsc" (backend folder) to address them and try committing again.';
+  false;
+)
+
+# check frontend with tsc
+bun run --filter learnify-frontend typecheck ||
+(
+  echo '🔍🤔 Hmm... Something seems off - TypeScript Check Failed. 🤔🔍'
+  echo 'Your code has some syntax errors. Please run "bun run tsc" (frontend folder) to address them and try committing again.';
+  false;
+)
+
+
+echo '✅✅✅✅ Success! Everything is in order. Committing now... ✅✅✅✅'

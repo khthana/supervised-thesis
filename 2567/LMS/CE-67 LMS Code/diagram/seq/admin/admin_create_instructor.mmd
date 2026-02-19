@@ -1,0 +1,32 @@
+sequenceDiagram
+  actor Client as Admin
+  participant RoleValidatorMiddleware
+  participant UserController
+  participant UserService
+  participant UserRepository
+  
+  Client->>+RoleValidatorMiddleware: POST /api/user
+  RoleValidatorMiddleware->>+RoleValidatorMiddleware: validateRequestRole(admin)
+  
+  alt User request role is not admin
+    RoleValidatorMiddleware-->>-Client: 403 Forbidden
+  else User request role is admin
+    RoleValidatorMiddleware->>+UserController: passRequestToController()
+    deactivate RoleValidatorMiddleware
+    UserController->>+UserService: createUser(user)
+
+    UserService->>+UserRepository: getAdminByUserId()
+    UserRepository-->>-UserService: admin
+
+    alt not found admin role
+      UserService-->>-UserController: userServiceResponse()
+      UserController-->>-Client: handleServiceResponse(failed)
+    else found admin role
+      activate UserService
+      UserService->>+UserRepository: createUser(user)
+      UserRepository-->>-UserService: user
+      UserService-->>-UserController: userServiceResponse()
+      activate UserController
+      UserController-->>-Client: handleServiceResponse(success)
+    end
+  end

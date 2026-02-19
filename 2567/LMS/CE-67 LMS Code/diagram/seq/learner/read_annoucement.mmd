@@ -1,0 +1,35 @@
+sequenceDiagram
+  actor Client as Learner
+  participant AnnouncementController
+  participant AnnouncementService
+  participant AnnouncementRepository
+  participant mediaService
+  participant mediaRepository
+
+  Client->>+AnnouncementController: GET /api/announcement/course/{courseCycle.id}
+  AnnouncementController->>+AnnouncementService: getAnnouncements()
+
+  AnnouncementService->>+AnnouncementRepository: getAnnouncements()
+  AnnouncementRepository-->>-AnnouncementService: announcements
+
+  AnnouncementService-->>-AnnouncementController: announcementServiceResponse()
+  AnnouncementController-->>-Client: handleServiceResponse(success)
+
+  Client->>+AnnouncementController: GET /api/announcement/course/{courseCycle.id}/{announcement.id}
+  AnnouncementController->>+AnnouncementService: getAnnouncementById()
+
+  AnnouncementService->>+AnnouncementRepository: getAnnouncementById()
+  AnnouncementRepository-->>-AnnouncementService: announcement
+
+  AnnouncementService-->>-AnnouncementController: announcementServiceResponse()
+  
+  alt Announcement has media
+    AnnouncementController->>+mediaService: uploadMedia()
+    activate AnnouncementController
+      mediaService->>+mediaRepository: saveMedia()
+      mediaRepository-->>-mediaService: media
+      mediaService-->>-AnnouncementController: mediaServiceResponse()
+    deactivate AnnouncementController
+  end
+
+  AnnouncementController-->>-Client: handleServiceResponse(success)

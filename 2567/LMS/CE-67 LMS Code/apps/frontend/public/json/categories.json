@@ -1,0 +1,53 @@
+{
+	"categories": [
+		{
+			"id": 1,
+			"name": {
+				"en": "Computer Network",
+				"th": "คอมพิวเตอร์เครือข่าย"
+			}
+		},
+		{
+			"id": 2,
+			"name": {
+				"en": "Hardware",
+				"th": "ฮาร์ดแวร์"
+			}
+		},
+		{
+			"id": 3,
+			"name": {
+				"en": "Artifact intelligent",
+				"th": "ปัญญาประดิษฐ์"
+			}
+		},
+		{
+			"id": 4,
+			"name": {
+				"en": "Data Science",
+				"th": "วิทยาการข้อมูล"
+			}
+		},
+		{
+			"id": 5,
+			"name": {
+				"en": "Cyber Security",
+				"th": "ความปลอดภัยทางไซเบอร์"
+			}
+		},
+		{
+			"id": 6,
+			"name": {
+				"en": "Software",
+				"th": "ซอฟต์แวร์"
+			}
+		},
+		{
+			"id": 7,
+			"name": {
+				"en": "Fundamental",
+				"th": "พื้นฐาน"
+			}
+		}
+	]
+}

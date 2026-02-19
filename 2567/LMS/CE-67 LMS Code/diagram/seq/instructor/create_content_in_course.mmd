@@ -1,0 +1,34 @@
+sequenceDiagram
+  actor Client as Instructor
+  participant CourseController
+  participant CourseService
+  participant CourseRepository
+  participant MediaService
+  participant MediaRepository
+
+  Client->>+CourseController: POST /api/course/{courseCycle.id}/content
+  CourseController->>+CourseService: createContentInCourse(courseContent)
+
+  CourseService->>+CourseService: checkUserEnrollPermission()
+  CourseService-->>-CourseService: permissionChecked
+  
+  alt User does not have permission
+    CourseService-->>-CourseController: courseServiceResponse()
+    CourseController-->>-Client: handleServiceResponse(failed)
+  else User has permission
+    activate CourseService
+    CourseService->>+CourseRepository: save(courseContent)
+    CourseRepository-->>-CourseService: courseContent
+    CourseService-->>-CourseController: courseContent
+    activate CourseController
+    CourseController-->>-Client: handleServiceResponse(success)
+
+    alt user upload media
+      Client->>+CourseController: uploadMedia(media)
+      CourseController->>+MediaService: uploadMedia(media)
+      MediaService->>+MediaRepository: save(media)
+      MediaRepository-->>-MediaService: media
+      MediaService-->>-CourseController: mediaServiceResponse()
+      CourseController-->>-Client: handleServiceResponse(success)
+    end
+  end

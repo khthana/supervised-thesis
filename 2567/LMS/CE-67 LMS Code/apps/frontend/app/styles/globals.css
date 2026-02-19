@@ -1,0 +1,112 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root[data-theme="light"] {
+	--radius: 0.5rem;
+	--color-bg-nav: #f5f4ed;
+	--color-bg: #faf9f5;
+	--color-text: #333333;
+	--color-learnify-primary: #fd9e02;
+	--color-learnify-secondary: #374557;
+	--color-bookmarks: #5985e1;
+	--color-admin-bg-nav: #fbfbfb;
+	--color-admin-bg-content: #ffffff;
+	--color-head-accord: #f9f9f9;
+	--color-sub-accord: #f3f4f6;
+}
+
+.dark,
+:root[data-theme~="dark"] {
+	--radius: 0.5rem;
+	--color-bg: #262624;
+	--color-bg-nav: #2b2b2b;
+	--color-text: #f9f9f9;
+	--color-learnify-primary: #fd9e02;
+	--color-learnify-secondary: #ffffff;
+	--color-bookmarks: #5985e1;
+	--color-admin-bg-nav: #151518;
+	--color-admin-bg-content: #09090b;
+	--color-head-accord: #454545;
+	--color-sub-accord: #7b7b7b;
+}
+
+.admin-navbar {
+	background-color: var(--color-admin-bg-nav);
+	color: var(--color-text);
+}
+
+.admin-content {
+	background-color: var(--color-admin-bg-content);
+	color: var(--color-text);
+}
+
+.navbar {
+	background-color: var(--color-bg-nav);
+	color: var(--color-text);
+}
+
+.ce {
+	color: var(--color-learnify-primary);
+}
+
+.learnify {
+	color: var(--color-learnify-secondary);
+}
+
+.textEditorbutton {
+	padding: 0.25rem 0.5rem;
+	margin-right: 0.5rem;
+	transition: box-shadow 0.3s ease-in-out;
+	border-radius: 0.25rem;
+}
+
+.textEditorbutton:hover {
+	box-shadow: 0 0 0 1px hsl(var(--primary));
+}
+
+/* this for self hosted font serv */
+/* @font-face {
+	font-family: "Noto Sans Thai Variable";
+	src: url("/font/NotoSansThai.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Material Symbols Outlined";
+	src: url("/font/MaterialSymbolsOutlined.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+} */
+
+.material-symbols-outlined {
+	font-family: "Material Symbols Outlined", sans-serif;
+	font-size: medium;
+	font-variation-settings: "FILL" var(--fill, 0), "wght" var(--wght, 400), "GRAD" var(--grad, 0), "opsz" var(--opsz, 24);
+}
+
+.favorite {
+	font-family: "Material Symbols Outlined", sans-serif;
+	font-variation-settings: "FILL" var(--fill, 1), "wght" var(--wght, 400), "GRAD" var(--grad, 0), "opsz" var(--opsz, 24);
+}
+
+body {
+	/* font-family: "Noto Sans Thai Variable", sans-serif; */
+	font-family: "Noto Sans Thai", sans-serif;
+	font-optical-sizing: auto;
+	/* font-weight: <weight>; */
+	font-style: normal;
+	font-variation-settings: "wdth" 100;
+	background-color: var(--color-bg);
+	width: 100%;
+}
+
+.head-accorder-learning {
+	background-color: var(--color-head-accord);
+}
+
+.sub-accorder-learing {
+	background-color: var(--color-sub-accord);
+}

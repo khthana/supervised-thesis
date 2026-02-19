@@ -1,0 +1,17 @@
+sequenceDiagram
+    actor Client as User
+    participant AuthController
+    participant UserService
+    participant AuthService
+    participant UserRepository
+
+    Client->>+AuthController: POST /api/auth/register
+    AuthController->>+UserService: createUser()
+    UserService->>+UserRepository: createAsync()
+    UserRepository-->>-UserService: user
+    UserService-->>-AuthController: userServiceResponse()
+
+    AuthController->>+AuthService: requestToken
+    AuthService-->>-AuthController: giveUserToken()
+
+    AuthController-->>-Client: handleServiceResponse(success)

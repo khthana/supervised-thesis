@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"rootDir": "../../",
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["./src/*"]
+		},
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"outDir": "dist",
+		"importsNotUsedAsValues": "remove",
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": true,
+		"composite": true,
+		"noEmit": true,
+		"types": ["@types/bun"]
+	}
+}

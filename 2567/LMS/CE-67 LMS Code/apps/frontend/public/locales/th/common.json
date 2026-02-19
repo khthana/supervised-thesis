@@ -1,0 +1,109 @@
+{
+	"toaster": {
+		"sessionExpired": "เซสชั่นหมดอายุ กรุณาเข้าสู่ระบบอีกครั้ง",
+		"somethingWrong": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งภายหลัง",
+		"success": "สำเร็จ",
+		"failed": "ไม่สำเร็จ",
+		"registerSuccess": "สมัครสมาชิกสำเร็จ"
+	},
+	"page": {
+		"login": {
+			"email": "อีเมล",
+			"password": "รหัสผ่าน",
+			"login": "เข้าสู่ระบบ",
+			"forgotPassword": "หากลืมรหัสผ่าน?",
+			"noAccount": "หากยังไม่มีบัญชีผู้ใช้? ",
+			"register": "สมัครสมาชิก",
+			"or": "หรือ",
+			"googleprovider": "ยืนยันตัวตนด้วยบริการ Google",
+			"onEmailError": "รูปแบบอีเมลไม่ถูกต้อง",
+			"onPasswordError": "กรุณากรอกรหัสผ่านของคุณ",
+			"onLoginError": "เข้าสู่ระบบไม่สำเร็จ",
+			"onLoginErrorInvalidMailPass": "อีเมลหรือรหัสผ่านผิด",
+			"onLoginErrorUserNotRegister": "ไม่พบบัญชีผู้ใช้ กรุณาสมัครสมาชิกก่อน",
+			"onLoginErrorClose": "ปิด",
+			"onLoginInternalError": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งภายหลัง"
+		},
+		"register": {
+			"alreadyAccount": "คุณมีบัญชีผู้ใช้แล้วหรือไม่? ",
+			"login": "เข้าสู่ระบบ",
+			"nameTitle": "คำนำหน้า",
+			"placeholderTitle": "เลือกคำนำหน้าชื่อของคุณ",
+			"engName": "ชื่อภาษาอังกฤษ",
+			"engLastName": "นามสกุลภาษาอังกฤษ",
+			"thaiName": "ชื่อภาษาไทย (Optional)",
+			"firstName": "ชื่อ",
+			"lastName": "นามสกุล",
+			"email": "อีเมล",
+			"placeholderEmail": "ใส่อีเมลของคุณ",
+			"password": "รหัสผ่าน",
+			"placeholderPassword": "ใส่รหัสผ่านของคุณ",
+			"confirmPassword": "ยืนยันรหัสผ่าน",
+			"continue": "ดำเนินการต่อ",
+			"onRegisterErrorClose": "ปิด",
+			"onRegisterError": "การสมัครสมาชิกไม่สำเร็จ",
+			"onPasswordError": "รหัสผ่านต้องมีความยาวอย่างน้อย 8 ตัวอักษร, ประกอบไปด้วย 1 ตัวอักษรพิมพ์ใหญ่, 1 ตัวเลข และ 1 ตัวอักษรพิเศษ",
+			"onPasswordConfirmError": "รหัสผ่านต้องตรงกัน",
+			"onEmailError": "รูปแบบอีเมลไม่ถูกต้อง",
+			"onNameError": "กรุณากรอกชื่อและนามสกุลของคุณเป็นภาษาอังกฤษ",
+			"onInvalidInput": "กรุณากรอกข้อมูลให้ครบถ้วนและถูกต้อง",
+			"onRegisterInternalError": "เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้งภายหลัง",
+			"onRegisterUserExist": "อีเมลนี้มีผู้ใช้อยู่แล้ว",
+			"toasterRegisterSuccess": "สมัครสมาชิกสำเร็จ โปรดเข้าสู่ระบบ"
+		},
+		"verifyAccount": {
+			"description": "กรุณาตรวจสอบอีเมลเพื่อยืนยันบัญชีของคุณ",
+			"sendEmail": "ส่งอีเมลยืนยันอีกครั้ง"
+		},
+		"courseDetail": {
+			"courses": "คอร์สเรียน",
+			"courseCreator": "ผู้สร้างคอร์ส",
+			"courseCategory": "หมวดหมู่",
+			"mainCategory": "หมวดหมู่หลัก",
+			"subCategory": "หมวดหมู่ย่อย",
+			"keywords": "คำค้นหา",
+			"enroll": "ลงทะเบียน",
+			"unenroll": "ยกเลิกการลงทะเบียน",
+			"reroll": "ลงทะเบียนอีกครั้ง",
+			"intocourse": "เข้าสู่คอร์ส",
+			"openenroll": "เปิดการลงทะเบียน",
+			"closeenroll": "ปิดการลงทะเบียน",
+			"languages": "ภาษา"
+		},
+		"verifyaccount": {
+			"toastTimeoutToken": "Token หมดอายุ เข้าสู่ระบบแล้วลองใหม่อีกครั้ง",
+			"toastSomethingWrong": "เกิดข้อผิดพลาด เข้าสู่ระบบแล้วลองใหม่อีกครั้ง"
+		},
+		"home": {
+			"AllCourses": "รายวิชาทั้งหมด",
+			"Search": "ค้นหา"
+		}
+	},
+	"comp": {
+		"LanguageSelector": {
+			"placeholder": "เลือกภาษา"
+		},
+		"LanguageAccorder": {
+			"title": "เลือกภาษา"
+		},
+		"UserNavBar": {
+			"logIn": "เข้าสู่ระบบ",
+			"userDropDown": {
+				"profile": "โปรไฟล์ของฉัน",
+				"logout": "ออกจากระบบ",
+				"login": "เข้าสู่ระบบ"
+			}
+		},
+		"ThemeToggler": {
+			"darkmode": "โหมดธีมมืด"
+		},
+		"Filterbar": {
+			"category": "หมวดหมู่",
+			"subCategory": "หมวดหมู่ย่อย",
+			"language": "ภาษา",
+			"thai": "ไทย",
+			"english": "อังกฤษ",
+			"Apply": "ยืนยัน"
+		}
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"roles": [
+		{
+			"role_id": 0,
+			"role_name_en": "Admin",
+			"role_name_th": "ผู้ดูแลระบบ"
+		},
+		{
+			"role_id": 1,
+			"role_name_en": "Instructor",
+			"role_name_th": "ผู้สอน"
+		},
+		{
+			"role_id": 2,
+			"role_name_en": "Instutions",
+			"role_name_th": "ผู้เรียน"
+		},
+		{
+			"role_id": 3,
+			"role_name_en": "Student",
+			"role_name_th": "นักเรียน"
+		},
+		{
+			"role_id": 4,
+			"role_name_en": "Teacher Assistant",
+			"role_name_th": "ผู้ช่วยอาจารย์"
+		}
+	]
+}

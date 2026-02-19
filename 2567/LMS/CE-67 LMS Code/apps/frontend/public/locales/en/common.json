@@ -1,0 +1,109 @@
+{
+	"toaster": {
+		"sessionExpired": "Session expired. Please login again.",
+		"somethingWrong": "Something went wrong. Please try again later.",
+		"success": "Success",
+		"failed": "Failed",
+		"registerSuccess": "Registered successfully"
+	},
+	"page": {
+		"login": {
+			"email": "Email",
+			"password": "Password",
+			"login": "Login",
+			"forgotPassword": "Forgot Password?",
+			"noAccount": "Don't have an account? ",
+			"register": "Register",
+			"or": "or",
+			"googleprovider": "Continue with Google",
+			"onEmailError": "Invalid email format.",
+			"onPasswordError": "Please fill in your password.",
+			"onLoginError": "Authentication failed",
+			"onLoginErrorInvalidMailPass": "Invalid email or password.",
+			"onLoginErrorUserNotRegister": "User not registered. Please register first.",
+			"onLoginErrorClose": "Close",
+			"onLoginInternalError": "An error occurred. Please try again later."
+		},
+		"register": {
+			"alreadyAccount": "Already have an account? ",
+			"login": "Login",
+			"nameTitle": "Name title",
+			"placeholderTitle": "Select your name title",
+			"engName": "English name",
+			"engLastName": "English lastname",
+			"thaiName": "Thai name (Optional)",
+			"firstName": "firstname",
+			"lastName": "lastname",
+			"email": "Email",
+			"placeholderEmail": "Account email address",
+			"password": "Password",
+			"placeholderPassword": "Account Password",
+			"confirmPassword": "Confirm Password",
+			"continue": "Continue",
+			"onRegisterErrorClose": "Close",
+			"onRegisterError": "Registeration failed",
+			"onPasswordError": "Password must be at least 8 characters long, contain 1 uppercase letter, 1 number, and 1 special character.",
+			"onPasswordConfirmError": "Passwords do not match.",
+			"onEmailError": "Invalid email format.",
+			"onNameError": "Please fill in your name & lastname in English.",
+			"onInvalidInput": "Please fill in the information correctly and completely.",
+			"onRegisterInternalError": "An error occurred. Please try again later.",
+			"onRegisterUserExist": "This email is already in use.",
+			"toasterRegisterSuccess": "Registered Please login"
+		},
+		"verifyAccount": {
+			"description": "Please check your email to verify your account.",
+			"sendEmail": "Send verification email again"
+		},
+		"courseDetail": {
+			"courses": "Courses",
+			"courseCreator": "Course Creator",
+			"courseCategory": "Category",
+			"mainCategory": "Main Category",
+			"subCategory": "Sub Category",
+			"keywords": "Keywords",
+			"enroll": "Enroll",
+			"unenroll": "Unenroll",
+			"reroll": "Reroll",
+			"intocourse": "Intro Course",
+			"openenroll": "Open for enrollment",
+			"closeenroll": "Close for enrollment",
+			"languages": "Languages"
+		},
+		"verifyaccount": {
+			"toastTimeoutToken": "Token has expired. Please login and try again.",
+			"toastSomethingWrong": "Something went wrong. Please login and try again."
+		},
+		"home": {
+			"AllCourses": "All Courses",
+			"Search": "Search"
+		}
+	},
+	"comp": {
+		"LanguageSelector": {
+			"placeholder": "Select Languages"
+		},
+		"LanguageAccorder": {
+			"title": "Select Languages"
+		},
+		"UserNavBar": {
+			"logIn": "Log In",
+			"userDropDown": {
+				"profile": "My Profile",
+				"logout": "Logout",
+				"login": "Login"
+			}
+		},
+		"ThemeToggler": {
+			"darkmode": "Dark mode"
+		},
+		"Filterbar": {
+			"category": "Category",
+			"subCategory": "Sub Category",
+			"language": "Language",
+			"thai": "Thai",
+			"english": "English",
+			"Apply": "Apply"
+		}
+	}
+}

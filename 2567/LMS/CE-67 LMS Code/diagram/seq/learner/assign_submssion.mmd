@@ -1,0 +1,39 @@
+sequenceDiagram
+  actor Client as Learner
+  participant AssignmentController
+  participant AssignmentService
+  participant AssignmentRepository
+  participant mediaService
+  participant mediaRepository
+
+  Client->>+AssignmentController: POST /api/assignment/submit/{assignment.id}
+  AssignmentController->>+AssignmentService: submitAssignment()
+  
+  AssignmentService->>+AssignmentRepository: getAssignmentById()
+  AssignmentRepository-->>-AssignmentService: assignment
+
+  AssignmentService->>+AssignmentService: checkAssignmentEndDate()
+  AssignmentService-->>-AssignmentService: assignmentValid
+
+  alt Assignment has ended
+    AssignmentService-->>-AssignmentController: assignmentServiceResponse()
+    AssignmentController-->>-Client: handleServiceResponse(failed)
+  else Assignment is still open
+    activate AssignmentService
+    AssignmentService->>+AssignmentRepository: submitAssignment()
+    AssignmentRepository-->>-AssignmentService: submissions
+
+    AssignmentService-->>-AssignmentController: assignmentServiceResponse()
+    activate AssignmentController
+
+    alt Assignment has media
+      AssignmentController->>+mediaService: uploadMedia()
+      activate AssignmentController
+        mediaService->>+mediaRepository: saveMedia()
+        mediaRepository-->>-mediaService: media
+        mediaService-->>-AssignmentController: mediaServiceResponse()
+      deactivate AssignmentController
+    end
+
+    AssignmentController-->>-Client: handleServiceResponse(success)
+  end

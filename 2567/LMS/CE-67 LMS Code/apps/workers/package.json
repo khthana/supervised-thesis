@@ -1,0 +1,30 @@
+{
+	"name": "learnify-worker",
+	"module": "src/index.ts",
+	"type": "module",
+	"script": {
+		"tsc": "tsc --noEmit",
+		"format:fix": "biome format --write .",
+		"lint": "biome lint .",
+		"typecheck": "tsc --noEmit",
+		"start": "bun run build/index.mjs",
+		"build": "tsup --out-dir build"
+	},
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"@types/bun": "latest",
+		"@types/ioredis": "^5.0.0",
+		"@types/redis": "^4.0.11",
+		"bullmq": "^5.41.7",
+		"ioredis": "^5.5.0",
+		"redis": "^4.7.0",
+		"tsup": "^8.4.0",
+		"vite-tsconfig-paths": "^5.1.4",
+		"vitest": "^3.0.7"
+	}
+}

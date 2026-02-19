@@ -1,0 +1,50 @@
+{
+	"user_nametitles": [
+		{
+			"en": "Mr.",
+			"th": "นาย"
+		},
+		{
+			"en": "Mrs.",
+			"th": "นาง"
+		},
+		{
+			"en": "Miss",
+			"th": "นางสาว"
+		}
+	],
+	"instructor_titles": [
+		{
+			"en": "Lecturer",
+			"th": "อ."
+		},
+		{
+			"en": "Dr.",
+			"th": "ดร."
+		},
+		{
+			"en": "Asst.Prof.",
+			"th": "ผศ."
+		},
+		{
+			"en": "Asst.Prof.Dr.",
+			"th": "ผศ.ดร."
+		},
+		{
+			"en": "Assoc.Prof.",
+			"th": "รศ."
+		},
+		{
+			"en": "Assoc.Prof.Dr.",
+			"th": "รศ.ดร."
+		},
+		{
+			"en": "Prof.",
+			"th": "ศ."
+		},
+		{
+			"en": "Prof.Dr.",
+			"th": "ศ.ดร."
+		}
+	]
+}
