@@ -1,0 +1,12 @@
+[submodule "wellwave-backend"]
+	path = wellwave-backend
+	url = https://github.com/WellWave-App/wellwave-backend.git
+	branch = main
+[submodule "wellwave-website"]
+	path = wellwave-website
+	url = https://github.com/WellWave-App/wellwave-website.git
+	branch = main
+[submodule "wellwave-frontend"]
+	path = wellwave-frontend
+	url = https://github.com/WellWave-App/wellwave-frontend.git
+	branch = main

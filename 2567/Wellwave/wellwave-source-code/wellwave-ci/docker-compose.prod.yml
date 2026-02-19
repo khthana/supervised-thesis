@@ -1,0 +1,70 @@
+services:
+  postgres:
+      image: postgres:latest
+      container_name: wellwave-postgres
+      restart: always
+      environment:
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        POSTGRES_DB: ${POSTGRES_DATABASE}
+        POSTGRES_USER: ${POSTGRES_USER}
+      ports:
+        - "${DB_PORT:-5432}:5432"
+      volumes:
+        - postgres-data:/var/lib/postgresql/data
+
+  backend:
+    image: wellwave-backend
+    container_name: wellwave-backend
+    restart: always
+    env_file:
+      - ./wellwave-backend/.env
+    build:
+      context: ./wellwave-backend
+      dockerfile: Dockerfile.prod
+    environment:
+      NODE_ENV: production
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DATABASE: ${POSTGRES_DATABASE}
+    ports:
+      - "${API_PORT:-3000}:3000"
+    depends_on:
+      - postgres
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    volumes:
+      - image-data:/usr/src/app/assets/images
+
+  website:
+    image: wellwave-website
+    container_name: wellwave-website
+    restart: always
+    build:
+      context: ./wellwave-website
+      dockerfile: Dockerfile.prod
+    ports:
+      - "${FRONTEND_PORT:-8080}:8080"
+    depends_on:
+      - backend
+
+  nginx:
+    build: 
+      context: ./proxy
+      dockerfile: Dockerfile
+    container_name: wellwave-nginx
+    restart: always
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    depends_on:
+      - backend
+      - website
+
+volumes:
+  postgres-data:
+    driver: local
+  image-data:
+    driver: local
