@@ -1,0 +1,92 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs "NodeJS"
+    }
+
+    stages {
+
+        stage("Install Environment") {
+            steps {
+                dir('tripweaver') {
+                    echo 'Installing Environment'
+                    sh 'npm install -g pnpm'
+                    sh 'pnpm install'
+                }
+            }
+        }
+
+        stage("Test Build") {
+            steps {
+                dir('tripweaver') {
+                    echo 'Test Build'
+                    sh 'pnpm run build'
+                }
+            }
+        }
+
+        stage("Clear Running Docker Containers") {
+            steps {
+                script {
+                    def containerIds = sh(script: 'docker ps -a --filter "ancestor=tripweaver-image" -q', returnStdout: true).trim()
+
+                    if (containerIds) {
+                        sh "docker stop ${containerIds}"
+                        sh "docker rm ${containerIds}"
+                    } else {
+                        echo "No containers with the image 'tripweaver-image' found."
+                    }
+                }
+            }
+        }
+
+        stage("Remove Old Docker Images") {
+            steps {
+                script {
+                    def imageIds = sh(script: 'docker images --filter "reference=tripweaver-image" -q', returnStdout: true).trim()
+
+                    if (imageIds) {
+                        sh "docker rmi ${imageIds}"
+                    } else {
+                        echo "No images with the name 'tripweaver-image' found."
+                    }
+                }
+            }
+        }
+
+        stage("Prepare Backend Environment"){
+            steps {
+                dir('tripweaver') {
+                    echo 'Create .env file'
+                    script {
+                    sh 'touch .env'
+                    sh '''
+                    echo "MONGDB_URI=${MONGDB_URI}" >> .env
+                    echo "NEXTAUTH_SECRET=${NEXTAUTH_SECRET}" >> .env
+                    echo "NEXTAUTH_URL=${NEXTAUTH_URL}" >> .env
+                    echo "GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}" >> .env
+                    echo "GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}" >> .env
+                    echo "OSRM_API_HOST=${OSRM_API_HOST}" >> .env
+                    echo "API_KEY=${API_KEY}" >> .env
+                    echo "NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}" >> .env
+                    echo "NEXT_PUBLIC_REC_API_URL=${NEXT_PUBLIC_REC_API_URL}" >> .env
+                    echo "NEXT_PUBLIC_OSRM_API_URL=${NEXT_PUBLIC_OSRM_API_URL}" >> .env
+                    echo "IMGBB_API_KEY=${IMGBB_API_KEY}" >> .env
+                    '''
+                    }
+                }
+            }
+        }
+
+        stage("Deploy on Docker"){
+            steps {
+                dir('tripweaver') {
+                    echo 'Deploy TripWeaver on Docker'
+                    sh 'docker build -t tripweaver-image .'
+                    sh 'docker run -d -p 3000:3000 -e TZ="Asia/Bangkok" tripweaver-image'
+                }
+            }
+        }
+    }
+}

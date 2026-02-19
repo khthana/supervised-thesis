@@ -1,0 +1,3 @@
+.ps__rail-x, .ps__rail-y {
+    display: none !important; /* Hide the scrollbar rails if they add extra height */
+  }
